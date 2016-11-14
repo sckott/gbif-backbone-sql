@@ -1,0 +1,21 @@
+CREATE TABLE gbif (
+    id integer PRIMARY KEY,
+    taxonID integer,
+    datasetID integer,
+    parentNameUsageID integer,
+    acceptedNameUsageID integer,
+    originalNameUsageID integer,
+    scientificName varchar(300),
+    taxonRank varchar(50),
+    nameAccordingTo varchar(50),
+    namePublishedIn varchar(50),
+    taxonomicStatus varchar(200),
+    nomenclaturalStatus varchar(200),
+    kingdom varchar(200),
+    phylum varchar(200),
+    clazz varchar(200),
+    ordder varchar(200),
+    family varchar(200),
+    genus varchar(200),
+    taxonRemarks text
+);

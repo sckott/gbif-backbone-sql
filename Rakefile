@@ -1,14 +1,36 @@
 require_relative 'backbone'
 
-desc "get backone, convert to sql, upload to amazon s3"
+desc "get backbone, convert to sql, upload to amazon s3"
 task :spine do
-  # Octokit.configure do |c|
-  #   c.login = ENV['GITHUB_USERNAME']
-  #   c.password = ENV['GITHUB_PAT_OCTOKIT']
-  # end
-
   begin
     Backbone.spine()
+  rescue Exception => e
+    raise e
+  end
+end
+
+desc "get and unzip backbone"
+task :fetch do
+  begin
+    Backbone.fetch()
+  rescue Exception => e
+    raise e
+  end
+end
+
+desc "create sql database"
+task :sql do
+  begin
+    Backbone.sql()
+  rescue Exception => e
+    raise e
+  end
+end
+
+desc "upload database to s3"
+task :s3 do
+  begin
+    Backbone.s3()
   rescue Exception => e
     raise e
   end
