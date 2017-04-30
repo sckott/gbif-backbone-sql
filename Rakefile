@@ -1,5 +1,10 @@
 require_relative 'backbone'
 
+desc "say hello"
+task :hello do
+  puts "hello world"
+end
+
 desc "get backbone, convert to sql, upload to amazon s3"
 task :spine do
   begin
