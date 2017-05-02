@@ -79,7 +79,7 @@ end
 
 def unzip_backbone
 	Zip::File.open('backbone-current.zip') do |zip_file|
-	  zip_file.glob("taxon.txt") do |f|
+	  zip_file.glob("Taxon.tsv") do |f|
 			begin
 				zip_file.extract(f, f.name) unless File.exist?(f.name)
 			end
