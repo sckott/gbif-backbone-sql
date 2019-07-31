@@ -1,9 +1,9 @@
 CREATE TABLE gbif (
     taxonID integer PRIMARY KEY,
-    datasetID integer,
-    parentNameUsageID integer,
-    acceptedNameUsageID integer,
-    originalNameUsageID integer,
+    datasetID varchar(300),
+    parentNameUsageID varchar(100),
+    acceptedNameUsageID varchar(100),
+    originalNameUsageID varchar(100),
     scientificName varchar(300),
     scientificNameAuthorship varchar(300),
     canonicalName varchar(300),
