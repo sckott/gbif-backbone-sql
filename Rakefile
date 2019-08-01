@@ -40,3 +40,13 @@ task :s3 do
     raise e
   end
 end
+
+desc "clean files"
+task :clean do
+  begin
+    Backbone.clean()
+  rescue Exception => e
+    raise e
+  end
+end
+

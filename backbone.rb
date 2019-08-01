@@ -35,9 +35,14 @@ module Backbone
 			fetch_backbone()
 			system('sh dogbif.sh')
 			to_s3()
+			clean_up()
 		else
 			puts 'backbone is old, not updating'
 		end
+	end
+
+	def self.clean
+		clean_up()
 	end
 
 end
@@ -91,4 +96,9 @@ def to_s3
 	File.open("gbif.sqlite", 'rb') do |file|
   	$s3.put_object(bucket: 'gbif-backbone', key: 'gbif.sqlite', body: file)
 	end
+end
+
+def clean_up
+	files_to_clean = ["Taxon.tsv", "backbone-current.zip", "gbif.sqlite"]
+	files_to_clean.each { |x| File.unlink(x) unless !File.exists?(x) }
 end
