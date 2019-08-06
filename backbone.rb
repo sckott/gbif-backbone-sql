@@ -94,7 +94,7 @@ end
 
 def to_s3
 	File.open("gbif.sqlite", 'rb') do |file|
-  	$s3.put_object(bucket: 'gbif-backbone', key: 'gbif.sqlite', body: file)
+  	$s3.put_object(bucket: 'taxize-dbs', key: 'gbif.sqlite', body: file)
 	end
 end
 
