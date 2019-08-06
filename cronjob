@@ -1,0 +1,1 @@
+0 0 7 * *  cd gbif-backbone-sql && rake spine && curl -fsS --retry 3 {healthcheck url} > /dev/null
