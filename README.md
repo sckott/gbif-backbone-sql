@@ -3,7 +3,7 @@ gbif-backbone-sql
 
 gbif backbone taxonomy as SQLite DB
 
-__Note:__ The backbone as sqlite is up at <https://s3-us-west-2.amazonaws.com/gbif-backbone/gbif.sqlite> -
+__Note:__ The backbone as sqlite is up at <https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.sqlite> -
 You can continue reading if you want to know the details of how it got there, and/or if you want to
 run this darwin-core to sql conversion yourself.
 
@@ -53,7 +53,7 @@ with the names `AWS_S3_WRITE_ACCESS_KEY` and `AWS_S3_WRITE_SECRET_KEY`
 
 ## Backbone as sqlite
 
-<https://s3-us-west-2.amazonaws.com/gbif-backbone/gbif.sqlite>
+<https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.sqlite>
 
 ## info
 
@@ -63,7 +63,3 @@ with the names `AWS_S3_WRITE_ACCESS_KEY` and `AWS_S3_WRITE_SECRET_KEY`
 Accessed via http://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c on 2016-08-16
 
 * GBIF backbone taxonomy license: `CC BY 3.0`
-
-## note to self
-
-* `aws-sdk` docs <http://docs.aws.amazon.com/sdkforruby/api/Aws.html>
