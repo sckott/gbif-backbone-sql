@@ -33,6 +33,7 @@ module Backbone
 		if is_backbone_new?
 			puts 'new backbone, updating'
 			fetch_backbone()
+			unzip_backbone()
 			system('sh dogbif.sh')
 			to_s3()
 			clean_up()
