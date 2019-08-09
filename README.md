@@ -1,9 +1,9 @@
-gbif-backbone-sql
-=================
+GBIF taxonomy as SQLite
+=======================
 
-gbif backbone taxonomy as SQLite DB
+GBIF backbone taxonomy as SQLite DB
 
-__Note:__ The backbone as sqlite is up at <https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.sqlite> -
+__Note:__ The backbone as sqlite is up at <https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.zip> -
 You can continue reading if you want to know the details of how it got there, and/or if you want to
 run this darwin-core to sql conversion yourself.
 
@@ -13,8 +13,8 @@ run this darwin-core to sql conversion yourself.
 * unzip
 * create sqlite DB `gbif.sqlite`
 * import `taxon.txt` into sqlite DB
-* upload `gbif.sqlite` to Amazon S3
-* exit
+* zip up sqlite file
+* upload `gbif.zip` to Amazon S3
 
 ## Usage
 
@@ -36,15 +36,18 @@ rake --tasks
 ```
 
 ```
+rake clean  # clean files
 rake fetch  # get and unzip backbone
+rake hello  # say hello
 rake s3     # upload database to s3
 rake spine  # get backbone, convert to sql, upload to amazon s3
 rake sql    # create sql database
+rake zip    # create zip file
 ```
 
 `rake spine` does all the things
 
-Or, you can do each separately with `rake fetch` then `rake sql`, then `rake s3`
+Or, you can do each separately with `rake fetch` then `rake sql`, then `rake zip`, then `rake s3`
 
 ### Env vars
 
@@ -53,7 +56,7 @@ with the names `AWS_S3_WRITE_ACCESS_KEY` and `AWS_S3_WRITE_SECRET_KEY`
 
 ## Backbone as sqlite
 
-<https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.sqlite>
+<https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.zip>
 
 ## info
 

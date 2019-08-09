@@ -24,6 +24,11 @@ module Backbone
 		system('sh dogbif.sh')
 	end
 
+	def self.zip
+		puts 'zipping sqlite db file into a zip file'
+		zip_up()
+	end
+	
 	def self.s3
 		puts 'uploading SQLite database to Amazon S3'
 		to_s3()
@@ -35,6 +40,7 @@ module Backbone
 			fetch_backbone()
 			unzip_backbone()
 			system('sh dogbif.sh')
+			zip_up()
 			to_s3()
 			clean_up()
 		else
@@ -101,13 +107,19 @@ def unzip_backbone
 	end
 end
 
+def zip_up
+	Zip::File.open('gbif.zip', Zip::File::CREATE) do |zip|
+	  zip.add("gbif.sqlite", "gbif.sqlite")
+	end
+end
+
 def to_s3
-	File.open("gbif.sqlite", 'rb') do |file|
-  	$s3.put_object(bucket: 'taxize-dbs', key: 'gbif.sqlite', body: file)
+	File.open("gbif.zip", 'rb') do |f|
+  		$s3.put_object(bucket: 'taxize-dbs', key: 'gbif.zip', body: f)
 	end
 end
 
 def clean_up
-	files_to_clean = ["Taxon.tsv", "backbone-current.zip", "gbif.sqlite"]
+	files_to_clean = ["Taxon.tsv", "backbone-current.zip", "gbif.sqlite", "gbif.zip"]
 	files_to_clean.each { |x| File.unlink(x) unless !File.exists?(x) }
 end
