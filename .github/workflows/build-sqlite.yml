@@ -1,10 +1,8 @@
 name: build-sqlite
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -22,6 +20,6 @@ jobs:
         ruby-version: 2.7
     - name: Install dependencies
       run: bundle install
-    - name: Run tests
+    - name: Build sqlite DB
       run: |
         rake spine
