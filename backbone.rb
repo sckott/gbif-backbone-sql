@@ -11,6 +11,8 @@ Aws.config.update({
 })
 $s3 = Aws::S3::Client.new
 
+$backbone_zip = 'https://hosted-datasets.gbif.org/datasets/backbone/backbone-current.zip'
+
 module Backbone
 
 	def self.fetch
@@ -61,8 +63,8 @@ def is_backbone_new?
 	end
 
 	# check last-modified header
-	res = conn.head 'http://rs.gbif.org/datasets/backbone/backbone-current.zip';
-	lm = DateTime.parse(res.headers['last-modified']).to_time
+	res = conn.head $backbone_zip;
+	lm = DateTime.parse(res.headers['date']).to_time
 
 	# file last modified
 	begin
@@ -88,7 +90,7 @@ def fetch_backbone
 
 		# get zip file
 		## FIXME - this GET request takes a long time
-		res = conn.get 'http://rs.gbif.org/datasets/backbone/backbone-current.zip';
+		res = conn.get $backbone_zip;
 
 		# write zip file to disk
 		File.open('backbone-current.zip', 'wb') { |fp| fp.write(res.body) }
