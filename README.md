@@ -1,6 +1,8 @@
 GBIF taxonomy as SQLite
 =======================
 
+![build-sqlite](https://github.com/ropenscilabs/gbif-backbone-sql/workflows/build-sqlite/badge.svg)
+
 GBIF backbone taxonomy as SQLite DB
 
 __Note:__ The backbone as sqlite is up at <https://taxize-dbs.s3-us-west-2.amazonaws.com/gbif.zip> -
@@ -15,6 +17,8 @@ run this darwin-core to sql conversion yourself.
 * import `taxon.txt` into sqlite DB
 * zip up sqlite file
 * upload `gbif.zip` to Amazon S3
+
+All above is run once per day on [Github Actions](https://github.com/ropenscilabs/gbif-backbone-sql/actions?query=workflow%3Abuild-sqlite)
 
 ## Usage
 
