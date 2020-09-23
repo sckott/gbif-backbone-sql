@@ -22,4 +22,4 @@ jobs:
       run: bundle install
     - name: Build sqlite DB
       run: |
-        rake spine
+        RUBYOPT="-W0" rake spine
