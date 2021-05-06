@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-s3'
 require 'faraday'
 require 'sqlite3'
 require 'date'
