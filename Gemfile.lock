@@ -26,7 +26,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     multipart-post (2.1.1)
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
@@ -34,6 +34,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   aws-sdk-s3 (~> 1.94, >= 1.94.1)
