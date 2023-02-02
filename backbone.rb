@@ -11,7 +11,7 @@ Aws.config.update({
 })
 $s3 = Aws::S3::Client.new
 
-$backbone_zip = 'https://hosted-datasets.gbif.org/datasets/backbone/backbone-current.zip'
+$backbone_zip = 'https://hosted-datasets.gbif.org/datasets/backbone/current/backbone.zip'
 
 module Backbone
 
