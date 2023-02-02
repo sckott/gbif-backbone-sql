@@ -68,7 +68,7 @@ def is_backbone_new?
 
 	# file last modified
 	begin
-		fm = File.stat("backbone-current.zip").mtime
+		fm = File.stat("backbone.zip").mtime
 	rescue Exception => e
 		fm = nil
 	end
@@ -82,7 +82,7 @@ def is_backbone_new?
 end
 
 def fetch_backbone
-	if !File.exist?('backbone-current.zip')
+	if !File.exist?('backbone.zip')
 		# initialize Faraday connection object
 		conn = Faraday.new do |x|
 		  x.adapter Faraday.default_adapter
@@ -93,14 +93,14 @@ def fetch_backbone
 		res = conn.get $backbone_zip;
 
 		# write zip file to disk
-		File.open('backbone-current.zip', 'wb') { |fp| fp.write(res.body) }
+		File.open('backbone.zip', 'wb') { |fp| fp.write(res.body) }
 	else
-		puts "'backbone-current.zip' found, skipping download"
+		puts "'backbone.zip' found, skipping download"
 	end
 end
 
 def unzip_backbone
-	Zip::File.open('backbone-current.zip') do |zip_file|
+	Zip::File.open('backbone.zip') do |zip_file|
     zip_file.glob(".meta/Taxon.tsv") do |f|
       f_path = "Taxon.tsv"
       zip_file.extract(f, f_path) unless File.exist?(f_path)
@@ -121,6 +121,6 @@ def to_s3
 end
 
 def clean_up
-	files_to_clean = ["Taxon.tsv", "backbone-current.zip", "gbif.sqlite", "gbif.zip"]
+	files_to_clean = ["Taxon.tsv", "backbone.zip", "gbif.sqlite", "gbif.zip"]
 	files_to_clean.each { |x| File.unlink(x) unless !File.exists?(x) }
 end
